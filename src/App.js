@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import TodoList from './TodoList';
 
 class TodoApp extends Component {
   constructor(props) {
@@ -55,24 +56,6 @@ class TodoApp extends Component {
     })
 
   };
-}
-
-class TodoList extends Component {
-  render() {
-    return (
-      <ul onClick={this.completeTask}>
-        {this.props.items.map((item, i) => (
-          <li id={item.id} key={item.id} >
-            <label className={'task'}>{item.text}</label>
-            <div className={'delete'} onClick={this.props.clickAction}></div>
-          </li>
-        ))}
-      </ul>
-    );
-  }
-  completeTask(e) {
-    if (e.target.tagName === 'LABEL') e.target.classList.toggle('completed');
-  }
 }
 
 export default TodoApp;
