@@ -3,18 +3,15 @@ import React, { Component } from 'react';
 class TodoList extends Component {
         render() {
                 return (
-                        <ul onClick={this.completeTask}>
-                                {this.props.items.map((item, i) => (
+                        <ul onClick={this.props.clickCompleteTask}>
+                                {this.props.items.map(item => (
                                         <li id={item.id} key={item.id} >
-                                                <label className={'task'}>{item.text}</label>
-                                                <div className={'delete'} onClick={this.props.clickAction}></div>
+                                                <label className={item.status ? 'completed' : null}>{item.text}</label>
+                                                <div className='delete' onClick={this.props.clickDeleteItem}></div>
                                         </li>
                                 ))}
                         </ul>
                 );
-        }
-        completeTask(e) {
-                if (e.target.tagName === 'LABEL') e.target.classList.toggle('completed');
         }
 }
 
